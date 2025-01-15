@@ -35,7 +35,7 @@ export const sendMessage = async(req,res) =>{
    // socket io functionality here
 
 
-   
+
 
    // await conversation.save();
    // await newMessage.save();
@@ -51,3 +51,27 @@ export const sendMessage = async(req,res) =>{
    }
 }
 
+
+export const getMessages = async(req,res) =>{
+
+   try {
+      const {id:userToChatId} = req.params;
+      const senderId = req.user._id;
+
+      const conversation = await Conversation.findOne(
+         {participants:{$all:[senderId,userToChatId]}}
+      ).populate("messages");
+  // populate is used to get messages instead of ids of messages
+       
+      if(!conversation){
+         return res.status(200).json([]);
+      }
+      
+        res.status(200).json(conversation.messages);
+
+   } catch (error) {
+      console.log("Error in getMessages: ",error.message);
+      res.status(500).json({message:error.message});
+
+   }
+}

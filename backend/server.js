@@ -5,7 +5,7 @@ import connectToMongodb from "./db/connectToMongodb.js";
 import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
-// import conversationRoutes from "./routes/conversation.routes.js";
+import userRoutes from "./routes/user.routes.js";
 dotenv.config();
 
 const port = process.env.PORT || 5000;
@@ -27,8 +27,9 @@ app.use("/api/auth", authRoutes);
 // message route
 app.use("/api/messages", messageRoutes);
 
-// conversation route
-// app.use("/api/conversations", conversationRoutes);
+// user route
+app.use("/api/users", userRoutes);
+
 
 app.listen(port, () => {
   connectToMongodb();
