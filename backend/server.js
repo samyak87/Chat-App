@@ -2,6 +2,7 @@ import express from "express";
 const app = express();
 import dotenv from "dotenv";
 import connectToMongodb from "./db/connectToMongodb.js";
+import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
 // import conversationRoutes from "./routes/conversation.routes.js";
@@ -15,7 +16,10 @@ app.get("/", (req, res) => {
 });
 
 
+
 app.use(express.json());
+
+app.use(cookieParser());
 
 // auth route
 app.use("/api/auth", authRoutes);
