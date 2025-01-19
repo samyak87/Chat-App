@@ -1,5 +1,5 @@
-import { useSocketContext } from "../../context/SocketContext";
-import useConversation from "../../zustand/useConversation";
+import { useSocketContext } from "../../context/SocketContext.jsx";
+import useConversation from "../../zustand/useConversation.js";
 
 const Conversation = ({ conversation, lastIdx, emoji }) => {
 	const { selectedConversation, setSelectedConversation } = useConversation();
@@ -27,7 +27,7 @@ const Conversation = ({ conversation, lastIdx, emoji }) => {
 						<p className='font-bold text-gray-200'>{conversation.fullName}</p>
 						<span className='text-xl'>{emoji}</span>
 					</div>
-				</div>d
+				</div>
 			</div>
 
 			{!lastIdx && <div className='divider my-0 py-0 h-1' />}

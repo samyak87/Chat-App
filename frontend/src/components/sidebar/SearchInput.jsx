@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IoSearchSharp } from "react-icons/io5";
-import useConversation from "../../zustand/useConversation";
-import useGetConversations from "../../hooks/useGetConversations";
+import useConversation from "../../zustand/useConversation.js";
+import useGetConversations from "../../hooks/useGetConversations.js";
 import toast from "react-hot-toast";
 
 const SearchInput = () => {
@@ -21,7 +21,8 @@ const SearchInput = () => {
 		if (conversation) {
 			setSelectedConversation(conversation);
 			setSearch("");
-		} else toast.error("No such user found!");
+		}
+		 else toast.error("No such user found!");
 	};
 	return (
 		<form onSubmit={handleSubmit} className='flex items-center gap-2'>
